@@ -35,13 +35,13 @@ function CommandMotor (params: any[]) {
     if (!(ValidateParams(3, params))) {
         return false
     }
-    commandMotorDuration = parseFloat("")
-    commandMotorSpeed = parseFloat("")
+    commandMotorDuration = parseFloat(params.shift())
+    commandMotorSpeed = parseFloat(params.shift())
     while (params.length > 0) {
         commandMotorName = params.shift()
         commandMotorDirection = params.shift()
         let commandMotorDirectionEnum = motor.Dir.CW
-if (commandMotorDirection == 0) {
+        if (commandMotorDirection == 0) {
             commandMotorDirectionEnum = motor.Dir.CW
         } else if (commandMotorDirection == 1) {
             commandMotorDirectionEnum = motor.Dir.CCW
@@ -111,13 +111,13 @@ function CommandServo (params: any[]) {
         return false
     }
     if (params[0] == "VF") {
-        motor.servo(motor.Servos.S1, parseFloat(""))
+        motor.servo(motor.Servos.S1, parseFloat(params[1]))
     } else if (params[0] == "HF") {
-        motor.servo(motor.Servos.S2, parseFloat(""))
+        motor.servo(motor.Servos.S2, parseFloat(params[1]))
     } else if (params[0] == "VB") {
-        motor.servo(motor.Servos.S3, parseFloat(""))
+        motor.servo(motor.Servos.S3, parseFloat(params[1]))
     } else if (params[0] == "HB") {
-        motor.servo(motor.Servos.S4, parseFloat(""))
+        motor.servo(motor.Servos.S4, parseFloat(params[1]))
     } else {
         SendError("Unknown servo")
         return false
