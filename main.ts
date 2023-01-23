@@ -37,11 +37,19 @@ function CommandMotor (params: any[]) {
     }
     commandMotorDuration = parseFloat(params.shift())
     commandMotorSpeed = parseFloat(params.shift())
+    if (commandMotorDuration < 0 || commandMotorDuration > 5000) {
+        SendError("Motor duration must be between 0 and 5000")
+        return false
+    }
+    if (commandMotorSpeed < 0 || commandMotorSpeed > 255) {
+        SendError("Motor speed must be between 0 and 255")
+        return false
+    }
     while (params.length > 0) {
         commandMotorName = params.shift()
         commandMotorDirection = params.shift()
         let commandMotorDirectionEnum = motor.Dir.CW
-        if (commandMotorDirection == 0) {
+if (commandMotorDirection == 0) {
             commandMotorDirectionEnum = motor.Dir.CW
         } else if (commandMotorDirection == 1) {
             commandMotorDirectionEnum = motor.Dir.CCW
