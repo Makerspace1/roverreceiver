@@ -62,6 +62,10 @@ if (commandMotorDirection == 0) {
             rovershield.MotorRun(rovershield.Motors.M1, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "HF") {
             rovershield.MotorRun(rovershield.Motors.M2, commandMotorDirectionEnum, commandMotorSpeed)
+        } else if (commandMotorName == "VM") {
+            rovershield.MotorRun(rovershield.Motors.M6, commandMotorDirectionEnum, commandMotorSpeed)
+        } else if (commandMotorName == "HM") {
+            rovershield.MotorRun(rovershield.Motors.M5, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "VB") {
             rovershield.MotorRun(rovershield.Motors.M3, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "HB") {
