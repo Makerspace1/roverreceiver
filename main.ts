@@ -37,12 +37,12 @@ function CommandMotor (params: any[]) {
     }
     commandMotorDuration = parseFloat(params.shift())
     commandMotorSpeed = parseFloat(params.shift())
-    if (commandMotorDuration < 0 || commandMotorDuration > 5000) {
-        SendError("Motor duration must be between 0 and 5000")
+    if (commandMotorDuration < 1 || commandMotorDuration > 10000) {
+        SendError("Motor duration must be between 1 and 10000")
         return false
     }
-    if (commandMotorSpeed < 0 || commandMotorSpeed > 255) {
-        SendError("Motor speed must be between 0 and 255")
+    if (commandMotorSpeed < 1 || commandMotorSpeed > 255) {
+        SendError("Motor speed must be between 1 and 255")
         return false
     }
     while (params.length > 0) {
