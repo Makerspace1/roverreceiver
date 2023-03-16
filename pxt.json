@@ -5,7 +5,7 @@
         "core": "*",
         "radio": "*",
         "microphone": "*",
-        "motor": "github:dfrobot/pxt-motor#2cdf17586556c5a532782aa436c516ae50f5f316"
+        "rovershield": "github:hpalls/rovershield#676c56b62199bfe3dc4b0c7658a0cf05c34df9f8"
     },
     "files": [
         "main.blocks",

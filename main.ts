@@ -48,39 +48,39 @@ function CommandMotor (params: any[]) {
     while (params.length > 0) {
         commandMotorName = params.shift()
         commandMotorDirection = params.shift()
-        let commandMotorDirectionEnum = motor.Dir.CW
+        let commandMotorDirectionEnum = rovershield.Dir.CW
 if (commandMotorDirection == 0) {
-            commandMotorDirectionEnum = motor.Dir.CW
+            commandMotorDirectionEnum = rovershield.Dir.CW
         } else if (commandMotorDirection == 1) {
-            commandMotorDirectionEnum = motor.Dir.CCW
+            commandMotorDirectionEnum = rovershield.Dir.CCW
         } else {
             SendError("Unknown motor direction. Expected 0 or 1")
-            motor.motorStopAll()
+            rovershield.motorStopAll()
             return false
         }
         if (commandMotorName == "VF") {
-            motor.MotorRun(motor.Motors.M1, commandMotorDirectionEnum, commandMotorSpeed)
+            rovershield.MotorRun(rovershield.Motors.M1, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "HF") {
-            motor.MotorRun(motor.Motors.M2, commandMotorDirectionEnum, commandMotorSpeed)
+            rovershield.MotorRun(rovershield.Motors.M2, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "VB") {
-            motor.MotorRun(motor.Motors.M3, commandMotorDirectionEnum, commandMotorSpeed)
+            rovershield.MotorRun(rovershield.Motors.M3, commandMotorDirectionEnum, commandMotorSpeed)
         } else if (commandMotorName == "HB") {
-            motor.MotorRun(motor.Motors.M4, commandMotorDirectionEnum, commandMotorSpeed)
+            rovershield.MotorRun(rovershield.Motors.M4, commandMotorDirectionEnum, commandMotorSpeed)
         } else {
             SendError("Unknown motor")
-            motor.motorStopAll()
+            rovershield.motorStopAll()
             return false
         }
     }
     basic.pause(commandMotorDuration)
-    motor.motorStopAll()
+    rovershield.motorStopAll()
     return true
 }
 function RunCommandQueue () {
     while (commandQueue.length > 0) {
         // basic.showNumber(commandQueue.length)
         if (!(ParseCommand(commandQueue.shift()))) {
-            motor.motorStopAll()
+            rovershield.motorStopAll()
             SendError("Error while executing queue. Clearing queue")
             ClearCommandQueue()
             basic.showIcon(IconNames.Sad)
@@ -119,13 +119,13 @@ function CommandServo (params: any[]) {
         return false
     }
     if (params[0] == "VF") {
-        motor.servo(motor.Servos.S1, parseFloat(params[1]))
+        rovershield.servo(rovershield.Servos.S1, parseFloat(params[1]))
     } else if (params[0] == "HF") {
-        motor.servo(motor.Servos.S2, parseFloat(params[1]))
+        rovershield.servo(rovershield.Servos.S2, parseFloat(params[1]))
     } else if (params[0] == "VB") {
-        motor.servo(motor.Servos.S3, parseFloat(params[1]))
+        rovershield.servo(rovershield.Servos.S3, parseFloat(params[1]))
     } else if (params[0] == "HB") {
-        motor.servo(motor.Servos.S4, parseFloat(params[1]))
+        rovershield.servo(rovershield.Servos.S4, parseFloat(params[1]))
     } else {
         SendError("Unknown servo")
         return false
@@ -167,7 +167,7 @@ let commandMotorSpeed = 0
 maxMessageLength = 18
 radio.setGroup(1)
 basic.showString("Init")
-motor.servo(motor.Servos.S1, 90)
-motor.servo(motor.Servos.S2, 90)
-motor.servo(motor.Servos.S3, 90)
-motor.servo(motor.Servos.S4, 90)
+rovershield.servo(rovershield.Servos.S1, 90)
+rovershield.servo(rovershield.Servos.S2, 90)
+rovershield.servo(rovershield.Servos.S3, 90)
+rovershield.servo(rovershield.Servos.S4, 90)
