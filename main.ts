@@ -165,11 +165,12 @@ let commandMotorName = ""
 let commandMotorDuration = 0
 let commandQueue: string[] = []
 let maxMessageLength = 0
-let receivedCommand = ""
-let radioRecBuffer = ""
 let commandMotorSpeed = 0
+let radioRecBuffer = ""
+let receivedCommand = ""
 maxMessageLength = 18
 radio.setGroup(1)
+radio.setFrequencyBand(100)
 basic.showString("Init")
 rovershield.servo(rovershield.Servos.S1, 90)
 rovershield.servo(rovershield.Servos.S2, 90)
