@@ -170,7 +170,8 @@ let radioRecBuffer = ""
 let receivedCommand = ""
 maxMessageLength = 18
 radio.setGroup(255)
-radio.setFrequencyBand(50)
+radio.setFrequencyBand(83)
+radio.setTransmitPower(7)
 basic.showString("Init")
 rovershield.servo(rovershield.Servos.S1, 90)
 rovershield.servo(rovershield.Servos.S2, 90)
